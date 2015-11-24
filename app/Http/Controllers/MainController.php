@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class U-MILDController extends Controller {
+class MainController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -24,8 +24,6 @@ class U-MILDController extends Controller {
 	 */
 	public function create()
 	{
-		$data = \App\Cerita::all();
-		return view('buku/add')->withData($data);
 		//
 	}
 
@@ -36,12 +34,6 @@ class U-MILDController extends Controller {
 	 */
 	public function store()
 	{
-		$addnew = new \App\Cerita;
-		$addnew->title = Input::get('title');
-		$addnew->contents = Input::get('contents');
-		$addnew->save();
-
-		return redirect(url('buku'));
 		//
 	}
 
