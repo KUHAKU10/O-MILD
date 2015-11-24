@@ -22,9 +22,16 @@ class A-MILDController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create_book()
 	{
-		//
+		date_default_timezone_set('Asia/Jakarta');
+        $id = $request->input('id');
+        $title = $request->input('title');
+        $contents = $request->input('contents');
+
+        DB::insert('insert into member (id, title, contents, created_at, updated_at) values(?,?,?,?,?,?,?,?,?,?)',
+        ['',$title,$contents,'','']);
+      	 return redirect('/create_book');	
 	}
 
 	/**
