@@ -41,6 +41,7 @@ class A-MILDController extends Controller {
 	 */
 	public function store()
 	{
+		
 		//
 	}
 

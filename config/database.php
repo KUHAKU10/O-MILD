@@ -57,7 +57,11 @@ return [
 			'host'      => 'localhost',
 			'database'  => 'OMILD',
 			'username'  => 'root',
+<<<<<<< HEAD
 			'password'  => 'ayey332211',
+=======
+			'password'  => 'silvi',
+>>>>>>> 75931e59d8a406f4e50e3ceb49799e320bbb453b
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

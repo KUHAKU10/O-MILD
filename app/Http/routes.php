@@ -19,3 +19,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::get('novel','U-MILD@index');
+
+Route::get('novel/add','U-MILD@create');
+
+Route::post('novel/add','U-MILD@store');
