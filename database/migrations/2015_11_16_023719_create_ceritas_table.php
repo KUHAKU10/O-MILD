@@ -15,6 +15,8 @@ class CreateCeritasTable extends Migration {
 		Schema::create('ceritas', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('idpengguna');
+			$table->integer('idbukus');
 			$table->string('title',1000);
 			$table->text('contents');
 			$table->timestamps();

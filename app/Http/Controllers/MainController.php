@@ -3,7 +3,13 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use DB;
+use Auth;
 use Illuminate\Http\Request;
+use App\Cerita;
+use App\Buku;
+use Illuminate\Support\Facades\Input;
+
 
 class MainController extends Controller {
 
@@ -14,6 +20,8 @@ class MainController extends Controller {
 	 */
 	public function index()
 	{
+		$data = array('data'=>Cerita::all());
+		return view('novel.all')->with($data);
 		//
 	}
 
@@ -22,8 +30,9 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function createstory()
 	{
+		return view('novel.add');
 		//
 	}
 
@@ -32,8 +41,15 @@ class MainController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function storestory()
 	{
+		$post = new Cerita;
+		$post->title = Input::get('title');
+		$post->contents = Input::get('contents');
+
+		$post->save();
+
+		return redirect(url('novel'));
 		//
 	}
 
@@ -43,7 +59,7 @@ class MainController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function showstory($id)
 	{
 		//
 	}
@@ -54,8 +70,11 @@ class MainController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function editstory($id)
 	{
+		$data = array('data'=>Cerita::find($id));
+
+		return view('novel.edit')->with($data);
 		//
 	}
 
@@ -65,8 +84,15 @@ class MainController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function updatestory($id)
 	{
+		$post = Cerita::find(Input::get('id'));
+		$post->idpengguna = Auth::user()->id;
+		$post->title = Input::get('title');
+		$post->contents = Input::get('contents');
+
+		$post->save();
+		return redirect(url('novel'));
 		//
 	}
 
@@ -76,8 +102,10 @@ class MainController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function deletestory($id)
 	{
+		DB::table('ceritas')->where('id',$id)->delete();
+		return redirect('novel');
 		//
 	}
 

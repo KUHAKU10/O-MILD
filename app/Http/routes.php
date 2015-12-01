@@ -15,12 +15,16 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-Route::get('novel','U-MILD@index');
+// Route::controllers([
+// 	'auth' => 'Auth\AuthController',
+// 	'password' => 'Auth\PasswordController',
+// ]);
+Route::get('novel','MainController@index');
 
-Route::get('novel/add','U-MILD@create');
+Route::get('novel/add','MainController@createstory');
 
-Route::post('novel/add','U-MILD@store');
+Route::post('novel/save','MainController@storestory');
+
+Route::get('novel/edit/{id}','MainController@editstory');
+
+Route::get('novel/delete/{id}','MainController@deletestory');
