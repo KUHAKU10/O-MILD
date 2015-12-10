@@ -19,7 +19,7 @@ Route::get('home', 'HomeController@index');
 // 	'auth' => 'Auth\AuthController',
 // 	'password' => 'Auth\PasswordController',
 // ]);
-Route::get('novel','MainController@index');
+Route::get('cover','MainController@index');
 
 Route::get('novel/add','MainController@createstory');
 
@@ -28,3 +28,7 @@ Route::post('novel/save','MainController@storestory');
 Route::get('novel/edit/{id}','MainController@editstory');
 
 Route::get('novel/delete/{id}','MainController@deletestory');
+
+Route::get('cover/add', 'MainController@createcover');
+
+Route::post('cover/save', 'MainController@kirimcover');

@@ -19,9 +19,9 @@ class CreateBukusTable extends Migration {
 			$table->text('cover');
 			$table->string('title',100);
 			$table->string('description',2000);
-			$table->string('category');
-			$table->string('language');
+			$table->string('slug');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

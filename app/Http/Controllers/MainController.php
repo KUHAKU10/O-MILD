@@ -20,8 +20,8 @@ class MainController extends Controller {
 	 */
 	public function index()
 	{
-		$data = array('data'=>Cerita::all());
-		return view('novel.all')->with($data);
+		$data = array('data'=>Buku::all());
+		return view('cover.all')->with($data);
 		//
 	}
 
@@ -107,6 +107,35 @@ class MainController extends Controller {
 		DB::table('ceritas')->where('id',$id)->delete();
 		return redirect('novel');
 		//
+	}
+
+	public function createcover()
+	{
+		return view ('cover.add');
+	}
+
+	public function kirimcover()
+	{
+		$post = new Buku;
+		// $post->idpengguna = Auth::user()->id;
+		$post->title = Input::get('title');
+		$post->description = Input::get('description');
+		$post->slug = str_slug(input::get('title'));
+
+		if(Input::hasfile('cover')){
+			$cover = date("YmdHis")
+			.uniqid()
+			."."
+			.Input::file('cover')->getClientOriginalExtension();
+
+			Input::file('cover')->move(storage_path(),$cover);
+			$post->cover = $cover;
+		}
+
+		$post->save();
+
+		return redirect(url('cover'));
+
 	}
 
 }
